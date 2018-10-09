@@ -162,3 +162,17 @@ CREATE TABLE `transfer_record` (
 UNIQUE KEY `puid_transfer_at` ( `puid`, `transfer_at` ),
 KEY `puid` ( `puid` ) 
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+CREATE TABLE `btc_user` (
+  `user_id` varchar(32) NOT NULL,
+  `user_name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `nickname` varchar(255) DEFAULT NULL,
+  `mail` varchar(255) DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `update_by` varchar(32) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  KEY `user_name` (`user_name`(191)),
+  KEY `mail` (`mail`(191))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
