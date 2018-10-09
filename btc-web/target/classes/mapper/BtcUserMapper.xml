@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.btc.app.mapper.BtcUserMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.btc.app.entity.BtcUser">
+		<id column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+		<result column="password" property="password" />
+		<result column="nickname" property="nickname" />
+		<result column="mail" property="mail" />
+		<result column="update_at" property="updateAt" />
+		<result column="update_by" property="updateBy" />
+		<result column="create_at" property="createAt" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id AS userId, user_name AS userName, password, nickname, mail, update_at AS updateAt, update_by AS updateBy, create_at AS createAt
+    </sql>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		SELECT 
+			user_id, user_name, password, nickname, mail, update_at, update_by, create_at
+		FROM 
+			btc_user
+	</select>
+	
+	<insert id="insert" parameterType="com.btc.app.entity.BtcUser">
+		INSERT INTO btc_user 
+			(user_id, user_name, password, nickname, mail, update_at, update_by, create_at) 
+		VALUES
+			(#{userId}, #{userName}, #{password}, #{nickname}, #{mail}, #{updateAt}, #{updateBy}, #{createAt})
+	</insert>
+	
+	<insert id="inserts" parameterType="java.util.List">
+		INSERT INTO btc_user 
+			(user_id, user_name, password, nickname, mail, update_at, update_by, create_at) 
+		VALUES
+		<foreach collection="list" item="item" separator=",">  
+            (#{item.userId}, #{item.userName}, #{item.password}, #{item.nickname}, #{item.mail}, #{item.updateAt}, #{item.updateBy}, #{item.createAt})
+        </foreach>  
+	</insert>
+	
+	<update id="update" parameterType="com.btc.app.entity.BtcUser">
+		UPDATE btc_user 
+		  <trim prefix="set" suffixOverrides=",">
+		  <if test="userName != null" >
+		    user_name=#{userName},
+		  </if>
+		  <if test="password != null" >
+		    password=#{password},
+		  </if>
+		  <if test="nickname != null" >
+		    nickname=#{nickname},
+		  </if>
+		  <if test="mail != null" >
+		    mail=#{mail},
+		  </if>
+		  <if test="updateAt != null" >
+		    update_at=#{updateAt},
+		  </if>
+		  <if test="updateBy != null" >
+		    update_by=#{updateBy},
+		  </if>
+		  <if test="createAt != null" >
+		    create_at=#{createAt},
+		  </if>
+		</trim>
+		 WHERE user_id = #{userId}
+	</update>
+	
+
+	<delete id="delete">
+		DELETE FROM btc_user  WHERE user_id = #{userId}
+	</delete>
+	
+	<select id="findByPrimaryKey" resultType="com.btc.app.entity.BtcUser">
+		SELECT 
+			<include refid="Base_Column_List"></include>
+		FROM 
+			btc_user
+		WHERE
+			user_id = #{userId}
+	</select>
+	
+	
+</mapper>
