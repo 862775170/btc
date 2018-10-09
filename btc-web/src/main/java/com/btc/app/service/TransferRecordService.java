@@ -8,7 +8,7 @@ import com.btc.app.entity.TransferRecord;
  * </p>
  *
  * @author cc
- * @since 2018-09-26
+ * @since 2018-10-09
  */
 public interface TransferRecordService  {
 	List<TransferRecord> getAll();

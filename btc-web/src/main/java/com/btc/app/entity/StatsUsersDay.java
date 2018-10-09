@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  *
  * @author cc
- * @since 2018-09-26
+ * @since 2018-10-09
  */
 public class StatsUsersDay implements Serializable {
 

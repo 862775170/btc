@@ -8,7 +8,7 @@ import com.btc.app.entity.StatsUsersMinute;
  * </p>
  *
  * @author cc
- * @since 2018-09-26
+ * @since 2018-10-09
  */
 public interface StatsUsersMinuteService  {
 	List<StatsUsersMinute> getAll();

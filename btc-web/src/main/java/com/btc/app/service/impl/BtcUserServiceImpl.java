@@ -51,4 +51,9 @@ public class BtcUserServiceImpl implements BtcUserService {
 	public BtcUser findBtcUserById(String userId){
 		return btcUserMapper.findByPrimaryKey(userId);
 	}
+
+	@Override
+	public BtcUser findByUsername(String username) {
+		return null;
+	}
 }
