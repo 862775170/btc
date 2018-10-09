@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: btc-web
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: chen9
+Implementation-Vendor-Id: com.btc
+Build-Jdk: 1.8.0_151
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/btc/btc-web
+Created-By: Maven Integration for Eclipse
+

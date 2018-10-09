@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.btc.app.mapper.TransferRecordMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.btc.app.entity.TransferRecord">
+		<id column="puid" property="puid" />
+		<result column="transfer_at" property="transferAt" />
+		<result column="transfer_sotashi" property="transferSotashi" />
+		<result column="transfer_id" property="transferId" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        puid, transfer_at AS transferAt, transfer_sotashi AS transferSotashi, transfer_id AS transferId
+    </sql>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		SELECT 
+			puid, transfer_at, transfer_sotashi, transfer_id
+		FROM 
+			transfer_record
+	</select>
+	
+	<insert id="insert" parameterType="com.btc.app.entity.TransferRecord">
+		INSERT INTO transfer_record 
+			(puid, transfer_at, transfer_sotashi, transfer_id) 
+		VALUES
+			(#{puid}, #{transferAt}, #{transferSotashi}, #{transferId})
+	</insert>
+	
+	<insert id="inserts" parameterType="java.util.List">
+		INSERT INTO transfer_record 
+			(puid, transfer_at, transfer_sotashi, transfer_id) 
+		VALUES
+		<foreach collection="list" item="item" separator=",">  
+            (#{item.puid}, #{item.transferAt}, #{item.transferSotashi}, #{item.transferId})
+        </foreach>  
+	</insert>
+	
+	<update id="update" parameterType="com.btc.app.entity.TransferRecord">
+		UPDATE transfer_record 
+		  <trim prefix="set" suffixOverrides=",">
+		  <if test="transferAt != null" >
+		    transfer_at=#{transferAt},
+		  </if>
+		  <if test="transferSotashi != null" >
+		    transfer_sotashi=#{transferSotashi},
+		  </if>
+		  <if test="transferId != null" >
+		    transfer_id=#{transferId},
+		  </if>
+		</trim>
+		 WHERE puid = #{puid}
+	</update>
+	
+
+	<delete id="delete">
+		DELETE FROM transfer_record  WHERE puid = #{puid}
+	</delete>
+	
+	<select id="findByPrimaryKey" resultType="com.btc.app.entity.TransferRecord">
+		SELECT 
+			<include refid="Base_Column_List"></include>
+		FROM 
+			transfer_record
+		WHERE
+			puid = #{puid}
+	</select>
+	
+	
+</mapper>
