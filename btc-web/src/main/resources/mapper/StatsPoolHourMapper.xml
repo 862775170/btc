@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.btc.app.mapper.StatsPoolHourMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.btc.app.entity.StatsPoolHour">
+		<id column="hour" property="hour" />
+		<result column="share_accept" property="shareAccept" />
+		<result column="share_reject" property="shareReject" />
+		<result column="reject_rate" property="rejectRate" />
+		<result column="score" property="score" />
+		<result column="earn" property="earn" />
+		<result column="created_at" property="createdAt" />
+		<result column="updated_at" property="updatedAt" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        hour, share_accept AS shareAccept, share_reject AS shareReject, reject_rate AS rejectRate, score, earn, created_at AS createdAt, updated_at AS updatedAt
+    </sql>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		SELECT 
+			hour, share_accept, share_reject, reject_rate, score, earn, created_at, updated_at
+		FROM 
+			stats_pool_hour
+	</select>
+	
+	<insert id="insert" parameterType="com.btc.app.entity.StatsPoolHour">
+		INSERT INTO stats_pool_hour 
+			(hour, share_accept, share_reject, reject_rate, score, earn, created_at, updated_at) 
+		VALUES
+			(#{hour}, #{shareAccept}, #{shareReject}, #{rejectRate}, #{score}, #{earn}, #{createdAt}, #{updatedAt})
+	</insert>
+	
+	<insert id="inserts" parameterType="java.util.List">
+		INSERT INTO stats_pool_hour 
+			(hour, share_accept, share_reject, reject_rate, score, earn, created_at, updated_at) 
+		VALUES
+		<foreach collection="list" item="item" separator=",">  
+            (#{item.hour}, #{item.shareAccept}, #{item.shareReject}, #{item.rejectRate}, #{item.score}, #{item.earn}, #{item.createdAt}, #{item.updatedAt})
+        </foreach>  
+	</insert>
+	
+	<update id="update" parameterType="com.btc.app.entity.StatsPoolHour">
+		UPDATE stats_pool_hour 
+		  <trim prefix="set" suffixOverrides=",">
+		  <if test="shareAccept != null" >
+		    share_accept=#{shareAccept},
+		  </if>
+		  <if test="shareReject != null" >
+		    share_reject=#{shareReject},
+		  </if>
+		  <if test="rejectRate != null" >
+		    reject_rate=#{rejectRate},
+		  </if>
+		  <if test="score != null" >
+		    score=#{score},
+		  </if>
+		  <if test="earn != null" >
+		    earn=#{earn},
+		  </if>
+		  <if test="createdAt != null" >
+		    created_at=#{createdAt},
+		  </if>
+		  <if test="updatedAt != null" >
+		    updated_at=#{updatedAt},
+		  </if>
+		</trim>
+		 WHERE hour = #{hour}
+	</update>
+	
+
+	<delete id="delete">
+		DELETE FROM stats_pool_hour  WHERE hour = #{hour}
+	</delete>
+	
+	<select id="findByPrimaryKey" resultType="com.btc.app.entity.StatsPoolHour">
+		SELECT 
+			<include refid="Base_Column_List"></include>
+		FROM 
+			stats_pool_hour
+		WHERE
+			hour = #{hour}
+	</select>
+	
+	
+</mapper>
