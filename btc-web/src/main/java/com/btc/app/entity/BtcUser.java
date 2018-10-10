@@ -3,6 +3,9 @@ package com.btc.app.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 /**
  * <p>
  * 
@@ -13,17 +16,20 @@ import java.util.Date;
  */
 public class BtcUser implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 	private String userId;
+	@NotEmpty
 	private String userName;
+	@NotEmpty
 	private String password;
+	@NotEmpty
 	private String nickname;
+	@Email
 	private String mail;
 	private Date updateAt;
 	private String updateBy;
 	private Date createAt;
-
 
 	public String getUserId() {
 		return userId;
@@ -91,15 +97,8 @@ public class BtcUser implements Serializable {
 
 	@Override
 	public String toString() {
-		return "BtcUser{" +
-			"userId=" + userId +
-			", userName=" + userName +
-			", password=" + password +
-			", nickname=" + nickname +
-			", mail=" + mail +
-			", updateAt=" + updateAt +
-			", updateBy=" + updateBy +
-			", createAt=" + createAt +
-			"}";
+		return "BtcUser{" + "userId=" + userId + ", userName=" + userName + ", password=" + password + ", nickname="
+				+ nickname + ", mail=" + mail + ", updateAt=" + updateAt + ", updateBy=" + updateBy + ", createAt="
+				+ createAt + "}";
 	}
 }

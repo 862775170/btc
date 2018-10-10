@@ -25,4 +25,6 @@ public interface BtcUserService {
 	BtcUser findBtcUserById(String userId);
 
 	BtcUser findByUsername(String username);
+
+	String login(String username, String password);
 }
