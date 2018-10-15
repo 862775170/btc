@@ -26,6 +26,8 @@ public class UserRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// TODO Auto-generated method stub
 		// String username = principals.getPrimaryPrincipal().toString();
+
+		Object primaryPrincipal = principals.getPrimaryPrincipal();
 		// SysUser user = sysUserService.findByUsername(username);
 		// Long userId = user.getId();
 		// List<SysUserRole> roles = sysUserRoleService.findByUserId(userId);
@@ -55,7 +57,7 @@ public class UserRealm extends AuthorizingRealm {
 		if (user == null) {
 			throw new AuthenticationException();// 没找到帐号
 		}
-		AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserName(), user.getPassword(), // 密码
+		AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, user.getPassword(), // 密码
 				getName() // realm name
 		);
 		return authenticationInfo;
