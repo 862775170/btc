@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -11,6 +12,19 @@
 
 	<name>mpool</name>
 	<description>mpool project for Spring Boot</description>
+=======
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.btc</groupId>
+	<artifactId>btc</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>btc</name>
+	<description>btc project for Spring Boot</description>
+>>>>>>> dc1d69f3b63594256b956ba4a187b47594e9ccdb
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -39,10 +53,14 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
 		</dependency>
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
+=======
+
+>>>>>>> dc1d69f3b63594256b956ba4a187b47594e9ccdb
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-web</artifactId>
@@ -63,8 +81,13 @@
 
 
 	<modules>
+<<<<<<< HEAD
 		<module>mpool-account</module>
 		<module>mpool-common</module>
 		<module>mpool-common-model</module>
+=======
+		<module>btc-web</module>
+		<module>btc-common</module>
+>>>>>>> dc1d69f3b63594256b956ba4a187b47594e9ccdb
 	</modules>
 </project>
